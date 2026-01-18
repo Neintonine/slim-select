@@ -1092,7 +1092,7 @@ class P {
   }
   updateOptions(e) {
     if (!(!e || e.length === 0)) {
-      this.isUpdating = !0, this.pendingOptionsChange = null, this.changeListen(!1), this.select.innerHTML = "";
+      this.isUpdating = !0, this.pendingOptionsChange = null, this.changeListen(!1), this.select.querySelectorAll("optgroup, option").forEach((t) => t.remove());
       for (const t of e)
         t instanceof g && this.select.appendChild(this.createOptgroup(t)), t instanceof u && this.select.appendChild(this.createOption(t));
       if (this.select.dispatchEvent(new Event("change", { bubbles: !0 })), this.changeListen(!0), this.isUpdating = !1, this.pendingOptionsChange !== null) {

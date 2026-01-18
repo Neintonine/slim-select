@@ -1,8 +1,8 @@
 import re, { forwardRef as oe, useRef as I, useImperativeHandle as ce, useEffect as Y } from "react";
-var V = { exports: {} }, R = {};
+var V = { exports: {} }, M = {};
 var ee;
 function he() {
-  if (ee) return R;
+  if (ee) return M;
   ee = 1;
   var p = Symbol.for("react.transitional.element"), e = Symbol.for("react.fragment");
   function t(s, i, n) {
@@ -20,7 +20,7 @@ function he() {
       props: n
     };
   }
-  return R.Fragment = e, R.jsx = t, R.jsxs = t, R;
+  return M.Fragment = e, M.jsx = t, M.jsxs = t, M;
 }
 var _ = {};
 var te;
@@ -42,7 +42,7 @@ function de() {
           return "Suspense";
         case P:
           return "SuspenseList";
-        case M:
+        case R:
           return "Activity";
       }
       if (typeof l == "object")
@@ -132,7 +132,7 @@ function de() {
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), l = this.props.ref, l !== void 0 ? l : null;
     }
-    function h(l, u, C, O, F, q) {
+    function h(l, u, C, O, F, U) {
       var y = C.ref;
       return l = {
         $$typeof: E,
@@ -162,10 +162,10 @@ function de() {
         configurable: !1,
         enumerable: !1,
         writable: !0,
-        value: q
+        value: U
       }), Object.freeze && (Object.freeze(l.props), Object.freeze(l)), l;
     }
-    function o(l, u, C, O, F, q) {
+    function o(l, u, C, O, F, U) {
       var y = u.children;
       if (y !== void 0)
         if (O)
@@ -210,7 +210,7 @@ React keys must be passed directly to JSX without using spread:
         C,
         i(),
         F,
-        q
+        U
       );
     }
     function d(l) {
@@ -219,7 +219,7 @@ React keys must be passed directly to JSX without using spread:
     function g(l) {
       return typeof l == "object" && l !== null && l.$$typeof === E;
     }
-    var f = re, E = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), A = Symbol.for("react.fragment"), S = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), k = Symbol.for("react.consumer"), L = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), B = Symbol.for("react.memo"), T = Symbol.for("react.lazy"), M = Symbol.for("react.activity"), ne = Symbol.for("react.client.reference"), j = f.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, le = Array.isArray, U = console.createTask ? console.createTask : function() {
+    var f = re, E = Symbol.for("react.transitional.element"), m = Symbol.for("react.portal"), A = Symbol.for("react.fragment"), S = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), k = Symbol.for("react.consumer"), L = Symbol.for("react.context"), b = Symbol.for("react.forward_ref"), D = Symbol.for("react.suspense"), P = Symbol.for("react.suspense_list"), B = Symbol.for("react.memo"), T = Symbol.for("react.lazy"), R = Symbol.for("react.activity"), ne = Symbol.for("react.client.reference"), j = f.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, J = Object.prototype.hasOwnProperty, le = Array.isArray, q = console.createTask ? console.createTask : function() {
       return null;
     };
     f = {
@@ -230,7 +230,7 @@ React keys must be passed directly to JSX without using spread:
     var G, X = {}, K = f.react_stack_bottom_frame.bind(
       f,
       n
-    )(), Z = U(s(n)), Q = {};
+    )(), Z = q(s(n)), Q = {};
     _.Fragment = A, _.jsx = function(l, u, C) {
       var O = 1e4 > j.recentlyCreatedOwnerStacks++;
       return o(
@@ -239,7 +239,7 @@ React keys must be passed directly to JSX without using spread:
         C,
         !1,
         O ? Error("react-stack-top-frame") : K,
-        O ? U(s(l)) : Z
+        O ? q(s(l)) : Z
       );
     }, _.jsxs = function(l, u, C) {
       var O = 1e4 > j.recentlyCreatedOwnerStacks++;
@@ -249,7 +249,7 @@ React keys must be passed directly to JSX without using spread:
         C,
         !0,
         O ? Error("react-stack-top-frame") : K,
-        O ? U(s(l)) : Z
+        O ? q(s(l)) : Z
       );
     };
   }()), _;
@@ -1353,7 +1353,7 @@ class be {
   }
   updateOptions(e) {
     if (!(!e || e.length === 0)) {
-      this.isUpdating = !0, this.pendingOptionsChange = null, this.changeListen(!1), this.select.innerHTML = "";
+      this.isUpdating = !0, this.pendingOptionsChange = null, this.changeListen(!1), this.select.querySelectorAll("optgroup, option").forEach((t) => t.remove());
       for (const t of e)
         t instanceof x && this.select.appendChild(this.createOptgroup(t)), t instanceof w && this.select.appendChild(this.createOption(t));
       if (this.select.dispatchEvent(new Event("change", { bubbles: !0 })), this.changeListen(!0), this.isUpdating = !1, this.pendingOptionsChange !== null) {
@@ -1657,7 +1657,7 @@ const Se = oe(
           if (!o.current) return;
           const v = a ? S.map((T) => T.value) : S[0]?.value ?? "", L = o.current.getData().flatMap(
             (T) => "label" in T ? T.options : [T]
-          ), b = g.current, D = b === void 0 ? !1 : Array.isArray(b) ? b.length > 0 && b.every((T) => L.some((M) => M.value === T)) : b !== "" && L.some((T) => T.value === b), P = Array.isArray(v) ? v.length > 0 && v.every((T) => L.some((M) => M.value === T)) : v !== "" && L.some((T) => T.value === v), B = Array.isArray(v) && Array.isArray(b) ? JSON.stringify(v.sort()) !== JSON.stringify(b.sort()) : b !== v;
+          ), b = g.current, D = b === void 0 ? !1 : Array.isArray(b) ? b.length > 0 && b.every((T) => L.some((R) => R.value === T)) : b !== "" && L.some((T) => T.value === b), P = Array.isArray(v) ? v.length > 0 && v.every((T) => L.some((R) => R.value === T)) : v !== "" && L.some((T) => T.value === v), B = Array.isArray(v) && Array.isArray(b) ? JSON.stringify(v.sort()) !== JSON.stringify(b.sort()) : b !== v;
           n && B && (D || P) && (n(v), g.current = v), A && A(S);
         }
       }, o.current = new we(m), i !== void 0 && E(i, !1), () => {
