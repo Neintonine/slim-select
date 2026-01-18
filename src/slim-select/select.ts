@@ -440,7 +440,8 @@ export default class Select {
     this.changeListen(false)
 
     // Clear out select
-    this.select.innerHTML = ''
+    this.select.querySelectorAll('optgroup, option')
+      .forEach(element => element.remove())
 
     for (const d of data) {
       if (d instanceof Optgroup) {
